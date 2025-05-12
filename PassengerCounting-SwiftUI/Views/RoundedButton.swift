@@ -9,12 +9,14 @@ import SwiftUI
 
 struct RoundedButton: View {
     
-    @Binding var textColor : Color
-    @Binding var backgroundColor : Color
+    var textColor : Color
+    var backgroundColor : Color
+    var plusaction : (() ->())
+
     var body: some View {
         
         Button(action: {
-                    print("Round Action")
+                    plusaction()
                     }) {
                     Text("+")
                             .font(.largeTitle)
@@ -27,5 +29,8 @@ struct RoundedButton: View {
 }
 
 #Preview {
-    RoundedButton(textColor: .constant(.white), backgroundColor: .constant(.red))
+    RoundedButton(textColor: .white, backgroundColor: .green, plusaction: {
+        
+        print("Tapped on the Plus Button")
+    })
 }
