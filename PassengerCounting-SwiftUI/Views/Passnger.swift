@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct Passnger: View {
+    @StateObject private var psgcount = PassangerCount()
     
     var body: some View {
         
         VStack {
-            
+ 
             Text("Passanger Counter")
                 .font(.largeTitle)
                 .foregroundStyle(.white)
@@ -26,7 +27,7 @@ struct Passnger: View {
                 .padding(.top,50)
             
             
-            Text("0")
+            Text("\(psgcount.totalcount)")
                 .font(.custom("Rockwell", size: 200))
                 .fontWeight(.bold)
                 .padding(.top,50)
@@ -53,13 +54,13 @@ struct Passnger: View {
             HStack(spacing: 120) {
                 
                 
-                Text("0")
+                Text("\(psgcount.bus1count)")
                     .font(.title)
                 
-                Text("0")
+                Text("\(psgcount.bus2count)")
                     .font(.title)
                 
-                Text("0")
+                Text("\(psgcount.bus3count)")
                     .font(.title)
 
           }
@@ -71,16 +72,26 @@ struct Passnger: View {
                 RoundedButton(textColor: .white, backgroundColor: .orange
                               , plusaction: {
                     
+                    
+                    psgcount.bus1count += 1
+                    
+                    
+                    
+                    
                 })
                 
                 RoundedButton(textColor: .white, backgroundColor: .green
                               , plusaction: {
+                    
+                    psgcount.bus2count += 1
                     
                 })
                 
                 
                 RoundedButton(textColor: .white, backgroundColor: .red
                               , plusaction: {
+                    
+                    psgcount.bus3count += 1
                     
                 })
             }
